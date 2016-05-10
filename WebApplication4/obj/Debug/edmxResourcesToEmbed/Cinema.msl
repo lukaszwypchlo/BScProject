@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CinemaModelStoreContainer" CdmEntityContainer="CinemaEntities">
+    <EntitySetMapping Name="bilet">
+      <EntityTypeMapping TypeName="CinemaModel.bilet">
+        <MappingFragment StoreEntitySet="bilet">
+          <ScalarProperty Name="id_bilet" ColumnName="id_bilet" />
+          <ScalarProperty Name="id_rezerwacja" ColumnName="id_rezerwacja" />
+          <ScalarProperty Name="id_seans" ColumnName="id_seans" />
+          <ScalarProperty Name="id_miejsce" ColumnName="id_miejsce" />
+          <ScalarProperty Name="weekend" ColumnName="weekend" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="film">
+      <EntityTypeMapping TypeName="CinemaModel.film">
+        <MappingFragment StoreEntitySet="film">
+          <ScalarProperty Name="id_film" ColumnName="id_film" />
+          <ScalarProperty Name="tytul" ColumnName="tytul" />
+          <ScalarProperty Name="rezyser" ColumnName="rezyser" />
+          <ScalarProperty Name="opis" ColumnName="opis" />
+          <ScalarProperty Name="gatunek" ColumnName="gatunek" />
+          <ScalarProperty Name="cena" ColumnName="cena" />
+          <ScalarProperty Name="czas_trwania" ColumnName="czas_trwania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="klient">
+      <EntityTypeMapping TypeName="CinemaModel.klient">
+        <MappingFragment StoreEntitySet="klient">
+          <ScalarProperty Name="id_klient" ColumnName="id_klient" />
+          <ScalarProperty Name="imie" ColumnName="imie" />
+          <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+          <ScalarProperty Name="stala_ulga" ColumnName="stala_ulga" />
+          <ScalarProperty Name="numer_telefonu" ColumnName="numer_telefonu" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="miejsce">
+      <EntityTypeMapping TypeName="CinemaModel.miejsce">
+        <MappingFragment StoreEntitySet="miejsce">
+          <ScalarProperty Name="id_miejsce" ColumnName="id_miejsce" />
+          <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+          <ScalarProperty Name="sektor" ColumnName="sektor" />
+          <ScalarProperty Name="rzad" ColumnName="rzad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rezerwacja">
+      <EntityTypeMapping TypeName="CinemaModel.rezerwacja">
+        <MappingFragment StoreEntitySet="rezerwacja">
+          <ScalarProperty Name="id_rezerwacja" ColumnName="id_rezerwacja" />
+          <ScalarProperty Name="id_klient" ColumnName="id_klient" />
+          <ScalarProperty Name="potwierdzenie" ColumnName="potwierdzenie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sala">
+      <EntityTypeMapping TypeName="CinemaModel.sala">
+        <MappingFragment StoreEntitySet="sala">
+          <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+          <ScalarProperty Name="ilosc_miejsc" ColumnName="ilosc_miejsc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seans">
+      <EntityTypeMapping TypeName="CinemaModel.seans">
+        <MappingFragment StoreEntitySet="seans">
+          <ScalarProperty Name="id_seans" ColumnName="id_seans" />
+          <ScalarProperty Name="id_film" ColumnName="id_film" />
+          <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="godzina" ColumnName="godzina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CinemaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="deleteBook" FunctionName="CinemaModel.Store.deleteBook" />
+    <FunctionImportMapping FunctionImportName="insertReservation" FunctionName="CinemaModel.Store.insertReservation" />
+  </EntityContainerMapping>
+</Mapping>

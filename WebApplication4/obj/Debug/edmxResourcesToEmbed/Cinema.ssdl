@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bilet">
+    <Key>
+      <PropertyRef Name="id_bilet" />
+    </Key>
+    <Property Name="id_bilet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_rezerwacja" Type="int" Nullable="false" />
+    <Property Name="id_seans" Type="int" Nullable="false" />
+    <Property Name="id_miejsce" Type="int" Nullable="false" />
+    <Property Name="weekend" Type="bit" />
+  </EntityType>
+  <EntityType Name="film">
+    <Key>
+      <PropertyRef Name="id_film" />
+    </Key>
+    <Property Name="id_film" Type="int" Nullable="false" />
+    <Property Name="tytul" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="rezyser" Type="nvarchar" MaxLength="50" />
+    <Property Name="opis" Type="nvarchar(max)" />
+    <Property Name="gatunek" Type="nvarchar" MaxLength="50" />
+    <Property Name="cena" Type="float" />
+    <Property Name="czas_trwania" Type="int" />
+  </EntityType>
+  <EntityType Name="klient">
+    <Key>
+      <PropertyRef Name="id_klient" />
+    </Key>
+    <Property Name="id_klient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="imie" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="stala_ulga" Type="float" />
+    <Property Name="numer_telefonu" Type="nchar" MaxLength="9" />
+    <Property Name="e_mail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="miejsce">
+    <Key>
+      <PropertyRef Name="id_miejsce" />
+    </Key>
+    <Property Name="id_miejsce" Type="int" Nullable="false" />
+    <Property Name="id_sala" Type="int" Nullable="false" />
+    <Property Name="sektor" Type="int" />
+    <Property Name="rzad" Type="int" />
+  </EntityType>
+  <EntityType Name="rezerwacja">
+    <Key>
+      <PropertyRef Name="id_rezerwacja" />
+    </Key>
+    <Property Name="id_rezerwacja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_klient" Type="int" Nullable="false" />
+    <Property Name="potwierdzenie" Type="bit" />
+  </EntityType>
+  <EntityType Name="sala">
+    <Key>
+      <PropertyRef Name="id_sala" />
+    </Key>
+    <Property Name="id_sala" Type="int" Nullable="false" />
+    <Property Name="ilosc_miejsc" Type="int" />
+  </EntityType>
+  <EntityType Name="seans">
+    <Key>
+      <PropertyRef Name="id_seans" />
+    </Key>
+    <Property Name="id_seans" Type="int" Nullable="false" />
+    <Property Name="id_film" Type="int" Nullable="false" />
+    <Property Name="id_sala" Type="int" Nullable="false" />
+    <Property Name="data" Type="date" />
+    <Property Name="godzina" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Bilet_Miejsce">
+    <End Role="miejsce" Type="Self.miejsce" Multiplicity="1" />
+    <End Role="bilet" Type="Self.bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="miejsce">
+        <PropertyRef Name="id_miejsce" />
+      </Principal>
+      <Dependent Role="bilet">
+        <PropertyRef Name="id_miejsce" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilet_Rezerwacja">
+    <End Role="rezerwacja" Type="Self.rezerwacja" Multiplicity="1" />
+    <End Role="bilet" Type="Self.bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rezerwacja">
+        <PropertyRef Name="id_rezerwacja" />
+      </Principal>
+      <Dependent Role="bilet">
+        <PropertyRef Name="id_rezerwacja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilet_Seans">
+    <End Role="seans" Type="Self.seans" Multiplicity="1" />
+    <End Role="bilet" Type="Self.bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seans">
+        <PropertyRef Name="id_seans" />
+      </Principal>
+      <Dependent Role="bilet">
+        <PropertyRef Name="id_seans" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Miejsce_Sala">
+    <End Role="sala" Type="Self.sala" Multiplicity="1" />
+    <End Role="miejsce" Type="Self.miejsce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sala">
+        <PropertyRef Name="id_sala" />
+      </Principal>
+      <Dependent Role="miejsce">
+        <PropertyRef Name="id_sala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezerwacja_Klient">
+    <End Role="klient" Type="Self.klient" Multiplicity="1" />
+    <End Role="rezerwacja" Type="Self.rezerwacja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="klient">
+        <PropertyRef Name="id_klient" />
+      </Principal>
+      <Dependent Role="rezerwacja">
+        <PropertyRef Name="id_klient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seans_Film">
+    <End Role="film" Type="Self.film" Multiplicity="1" />
+    <End Role="seans" Type="Self.seans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="film">
+        <PropertyRef Name="id_film" />
+      </Principal>
+      <Dependent Role="seans">
+        <PropertyRef Name="id_film" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seans_Sala">
+    <End Role="sala" Type="Self.sala" Multiplicity="1" />
+    <End Role="seans" Type="Self.seans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sala">
+        <PropertyRef Name="id_sala" />
+      </Principal>
+      <Dependent Role="seans">
+        <PropertyRef Name="id_sala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="deleteBook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="resId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insertReservation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="resId" Type="int" Mode="In" />
+    <Parameter Name="seaId" Type="int" Mode="In" />
+    <Parameter Name="plaId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="CinemaModelStoreContainer">
+    <EntitySet Name="bilet" EntityType="Self.bilet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="film" EntityType="Self.film" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="klient" EntityType="Self.klient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="miejsce" EntityType="Self.miejsce" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rezerwacja" EntityType="Self.rezerwacja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sala" EntityType="Self.sala" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="seans" EntityType="Self.seans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Bilet_Miejsce" Association="Self.FK_Bilet_Miejsce">
+      <End Role="miejsce" EntitySet="miejsce" />
+      <End Role="bilet" EntitySet="bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilet_Rezerwacja" Association="Self.FK_Bilet_Rezerwacja">
+      <End Role="rezerwacja" EntitySet="rezerwacja" />
+      <End Role="bilet" EntitySet="bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilet_Seans" Association="Self.FK_Bilet_Seans">
+      <End Role="seans" EntitySet="seans" />
+      <End Role="bilet" EntitySet="bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Miejsce_Sala" Association="Self.FK_Miejsce_Sala">
+      <End Role="sala" EntitySet="sala" />
+      <End Role="miejsce" EntitySet="miejsce" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezerwacja_Klient" Association="Self.FK_Rezerwacja_Klient">
+      <End Role="klient" EntitySet="klient" />
+      <End Role="rezerwacja" EntitySet="rezerwacja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seans_Film" Association="Self.FK_Seans_Film">
+      <End Role="film" EntitySet="film" />
+      <End Role="seans" EntitySet="seans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seans_Sala" Association="Self.FK_Seans_Sala">
+      <End Role="sala" EntitySet="sala" />
+      <End Role="seans" EntitySet="seans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,256 @@
+﻿html {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #000;
+    border-top: solid 10px #000;
+    color: #3e5667;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    color: #333;
+    outline: none;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-decoration: underline;
+}
+
+    a:link, a:visited,
+    a:active, a:hover {
+        color: #333;
+    }
+
+    a:hover {
+        background-color: #202020;
+    }
+
+header, footer, hgroup,
+nav, section {
+    display: block;
+}
+
+mark {
+    background-color: #000;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+    margin-right: 480px;
+    margin-top: 15px;
+    font-size: 1.7em;
+}
+
+.clear-fix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    color: #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+    h5 a:link, h5 a:visited, h5 a:active {
+        padding: 0;
+        text-decoration: none;
+    }
+
+/* main layout
+----------------------------------------------------------*/
+.content {
+    margin: 0 auto;
+    max-width: 1100px;
+    background-color: #FFF;
+    border-radius: 5px;
+}
+
+#body {
+    background: -webkit-linear-gradient(#000, #EBF0FF,  white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#000, #EBF0FF,  white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#000, #EBF0FF,  white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#000, #EBF0FF,  white); /* Standard syntax (must be last) */
+    clear: both;
+    padding-bottom: 0;
+}
+
+header .content-wrapper {
+    padding-top: 10px;
+    background-color: #000; 
+    display: inline;
+    max-width: 1050px;
+}
+    
+footer {
+    clear: both;
+    background-color: #000;
+    font-size: .8em;
+    height: 100%;
+    min-height: 200px;
+    text-align: center;
+}
+
+.mainDiv {
+    margin: 35px 25px 25px 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+/* site title
+----------------------------------------------------------*/
+.site-title {
+    color: #000;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 3.3em;
+    margin-left: 100%;
+    text-align: right;
+}
+
+.site-title a, .site-title a:hover, .site-title a:active {
+    background: none;
+    color: #FFF;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+/*nowe*/
+.banimg {
+             display: block;
+         }
+
+         .banText {
+             font-size: 200%;
+             text-decoration: none;
+             font-weight: bold;
+             background-color: white;
+             line-height: 150%;
+         }
+         .banText:hover {
+             background-color: black;
+             color: white;
+         }
+
+         .dayButt {
+             background-color: #e6f5ff;
+             border: none;
+             margin: 5px 5px 5px 5px;
+             height: 40px;
+             word-break: break-all;
+             border: solid;
+             border-color: #99ccfc;
+             white-space: pre-wrap; 
+             width: 100px;
+             word-break: break-all;
+             border-radius: 5px;
+         }
+
+         .dayButt:hover {
+             background-color: #99ccfc;
+         }
+
+         .godz1 {
+             min-width: 60%;
+             display: inline;
+             font-size: x-large;
+             text-decoration: none;
+             float: left;
+             padding-top: 0.3%;
+         }
+
+         .godz2 {
+             display: inline;
+             font-size: x-large;
+             text-decoration: none;
+             float: left;
+             padding-top: 0.3%;
+         }
+
+         .alt {
+             background-color: #e6f5ff ;
+             height: 35px;
+         }
+
+         .prime {
+             height: 35px;
+         }
+
+         .alt:hover, .prime:hover {
+             background-color: #F0F0F0;
+         }
+
+         .hlg1, .hlg2 {
+             text-decoration: none;
+         }
+
+         .hlg2 {
+             margin-right: 20px;
+         }
+
+         .hlg1:hover, .hlg2:hover {
+             text-decoration: underline;
+             background-color: transparent;
+         }
+
+         .btnNStep {
+            border-radius: 5px;
+            background-color: #cce6ff;
+            border-color: #cce6ff;
+        }
+
+        .btnNStep:hover {
+            background-color: #b3d9ff;
+        }
+
+        .buttNStepDiv {
+            margin-left: 40%;
+            display: block;
+        }
+
+        .marg {
+            margin-left: 100px;
+        }
+
+        .seatLab {
+            margin-right: 30px;
+            font-weight: bold;
+        }
